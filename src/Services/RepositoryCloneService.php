@@ -1,6 +1,6 @@
 <?php
 
-namespace Skycoder\LravelPluginManager\Service;
+namespace Skycoder\LravelPluginManager\Services;
 
 
 

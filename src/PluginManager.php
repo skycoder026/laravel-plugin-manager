@@ -2,7 +2,7 @@
 
 namespace Skycoder\LravelPluginManager;
 
-use Skycoder\LravelPluginManager\Service\RepositoryCloneService;
+use Skycoder\LravelPluginManager\Services\RepositoryCloneService;
 
 class PluginManager
 {
