@@ -1,0 +1,41 @@
+{
+    "name": "skycoder/laravel-plugin-manager",
+    "description": "Laravel Plugin Manager package",
+    "homepage": "https://github.com/skycoder026/laravel-plugin-manager",
+    "license": "MIT",
+    "keywords": [
+        "plugin-process",
+        "laravel-plugin-manager",
+        "plugin-manager",
+        "asmakash",
+        "akashcsem",
+        "skycoder"
+    ],
+    "authors": [
+        {
+            "name": "Skycoder",
+            "email": "akashcseuu026@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Skycoder\\LravelPluginManager\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Skycoder\\LravelPluginManager\\PluginManagerServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "readme": "./readme.md",
+    "time": "2022-02-03",
+    "require": {
+        "php": "^7.2.5"
+    }
+}
