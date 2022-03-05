@@ -107,24 +107,6 @@ class RepositoryCloneService
 
 
 
-    /*
-     |--------------------------------------------------------------------------
-     | REMOVE PLUGIN FROM LOCAL
-     |--------------------------------------------------------------------------
-    */
-    public function removePlugin($dir)
-    {
-        $files = array_diff(scandir($dir), array('.','..'));
-        foreach ($files as $file) {
-        (is_dir("$dir/$file")) ? $this->removePlugin("$dir/$file") : unlink("$dir/$file");
-        }
-        return rmdir($dir);
-    }
-
-
-
-
-
 
 
 

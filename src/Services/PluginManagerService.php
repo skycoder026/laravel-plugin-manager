@@ -1,10 +1,10 @@
 <?php
 
-namespace Skycoder\LravelPluginManager;
+namespace Skycoder\LravelPluginManager\Services;
 
 use Skycoder\LravelPluginManager\Services\RepositoryCloneService;
 
-class PluginManager
+class PluginManagerService
 {
 
     public $author          = 'skycoder026';
@@ -56,15 +56,32 @@ class PluginManager
     */
     public function uninstallPlugin($pluginName)
     {
-        $git = new RepositoryCloneService(base_path() . '/plugins', '', $pluginName);
+        $dir = base_path() . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . $pluginName;
 
-        $git->removePlugin($git->dir . '/' . $pluginName);
+        $this->removePlugin($dir);
 
         return $pluginName . ' plugin successfully removed';
     }
 
 
 
+
+
+    /*
+     |--------------------------------------------------------------------------
+     | REMOVE PLUGIN FROM LOCAL
+     |--------------------------------------------------------------------------
+    */
+    public function removePlugin($dir)
+    {
+        $files = array_diff(scandir($dir), array('.','..'));
+
+        foreach ($files as $file) {
+            (is_dir("$dir/$file")) ? $this->removePlugin("$dir/$file") : unlink("$dir/$file");
+        }
+
+        return rmdir($dir);
+    }
 
 
 
