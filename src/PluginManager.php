@@ -27,16 +27,18 @@ class PluginManager
      | INSTALL NEW PLUGIN
      |--------------------------------------------------------------------------
     */
-    public function installPlugin()
+    public function installPlugin($author, $branch, $repository, $pluginName)
     {
 
-        $git = new RepositoryCloneService(base_path() . '/plugins', $this->repository);
 
 
-        $git->clone($this->author, $this->repository, $this->branch);
+        $git = new RepositoryCloneService(base_path() . '/plugins', $repository, $pluginName);
 
 
-        return $this->pluginName . ' plugin successfully added';
+        $git->clone($author, $repository, $branch);
+
+
+        return $pluginName . ' plugin successfully added';
     }
 
 
@@ -52,13 +54,13 @@ class PluginManager
      | REMOVE EXISTING PLUGIN
      |--------------------------------------------------------------------------
     */
-    public function uninstallPlugin()
+    public function uninstallPlugin($pluginName)
     {
-        $git = new RepositoryCloneService(base_path() . '/plugins', $this->pluginName);
+        $git = new RepositoryCloneService(base_path() . '/plugins', '', $pluginName);
 
-        $git->removePlugin($git->dir . '/' . $this->pluginName);
+        $git->removePlugin($git->dir . '/' . $pluginName);
 
-        return $this->pluginName . ' plugin successfully removed';
+        return $pluginName . ' plugin successfully removed';
     }
 
 

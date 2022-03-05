@@ -17,6 +17,7 @@ class RepositoryCloneService
     private     $curl;
     public      $dir;
     private     $fs;
+    public      $repo;
     public      $pluginName;
 
 
@@ -25,8 +26,9 @@ class RepositoryCloneService
      | CONSTRUCTOR
      |--------------------------------------------------------------------------
     */
-    function __construct($dir, $pluginName)
+    function __construct($dir, $repository, $pluginName)
     {
+        $this->repo = $repository;
         $this->pluginName = $pluginName;
 
         $this->curl = new Curl;
@@ -62,20 +64,25 @@ class RepositoryCloneService
     */
     public function clone($author, $repo, $branch)
     {
+
         $contents = $this->get('https://codeload.github.com/' . $author . '/' . $repo . '/zip/' . $branch);
         $absolute = $this->dir . '/' ;
+
+
 
 
 
         $this->fs->put($repo . '.zip', $contents);
 
         $zip = new ZipArchive;
+
         $zip->open($absolute . $repo . '.zip');
 
 
         $zip->extractTo($absolute);
 
         $zip->close();
+
 
         $this->fs->delete($repo . '.zip');
 
