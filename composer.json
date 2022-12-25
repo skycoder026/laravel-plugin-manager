@@ -1,0 +1,24 @@
+{
+    "name": "skycoder/lp-manager",
+    "description": "Laravel Plugin Manager",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Skycoder",
+            "email": "skycoder026@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Skycoder\\LravelPluginManager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Skycoder\\LravelPluginManager\\PluginManagerServiceProvider"
+            ]
+        }
+    }
+}
